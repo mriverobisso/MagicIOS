@@ -41,41 +41,116 @@
   --text-on-primary: #ffffff;
 }
 
-/* ===== LIGHT MODE OVERRIDES - Critical for text visibility ===== */
+/* ===== LIGHT MODE OVERRIDES — Forzado en todos los elementos ===== */
+
+/* Fuerza color-scheme nativo del browser */
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Target ALL text-bearing elements under light mode */
+[data-theme="light"],
+[data-theme="light"] *:not(svg):not(path):not(.btn-primary):not(.btn-primary *) {
+  color: var(--text-main);
+}
+
+/* Restore muted text for specific helper elements */
+[data-theme="light"] p {
+  color: var(--text-muted) !important;
+}
+
+/* Buttons always keep white text */
+[data-theme="light"] .btn-primary,
+[data-theme="light"] .btn-primary * {
+  color: #ffffff !important;
+}
+
+/* Status badges and explicitly colored elements */
+[data-theme="light"] [style*="color: #00e676"],
+[data-theme="light"] [style*="color: #00f0ff"],
+[data-theme="light"] [style*="color: #ff2e93"],
+[data-theme="light"] [style*="color: var(--primary-color)"] {
+  color: inherit;
+}
+
+/* Headings — explicit override for inline-styled headings */
 [data-theme="light"] h1,
 [data-theme="light"] h2,
 [data-theme="light"] h3,
 [data-theme="light"] h4,
 [data-theme="light"] h5,
 [data-theme="light"] h6 {
-  color: var(--text-main) !important;
+  color: #111318 !important;
 }
 
-[data-theme="light"] p,
+/* Spans, divs with inline text that JS components set inline */
+[data-theme="light"] div,
 [data-theme="light"] span,
 [data-theme="light"] td,
 [data-theme="light"] th,
-[data-theme="light"] label {
-  color: var(--text-muted);
+[data-theme="light"] li,
+[data-theme="light"] label,
+[data-theme="light"] strong,
+[data-theme="light"] b {
+  color: var(--text-main);
 }
 
+/* Table header separators and muted labels */
+[data-theme="light"] thead th {
+  color: var(--text-muted) !important;
+}
+
+/* Panels and Glass cards */
 [data-theme="light"] .glass-panel {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
+  background: rgba(255, 255, 255, 0.98) !important;
 }
 
+/* Inputs */
 [data-theme="light"] input,
 [data-theme="light"] textarea,
 [data-theme="light"] select {
   background: rgba(0, 0, 0, 0.04) !important;
-  color: var(--text-main) !important;
+  color: #111318 !important;
   border-color: rgba(0, 0, 0, 0.15) !important;
 }
 
 [data-theme="light"] input::placeholder,
 [data-theme="light"] textarea::placeholder {
-  color: var(--text-muted) !important;
-  opacity: 0.7;
+  color: #4a4f5e !important;
+  opacity: 0.8;
 }
+
+/* Nav links in sidebar */
+[data-theme="light"] nav a {
+  color: var(--text-muted) !important;
+}
+
+[data-theme="light"] nav a[style*="color: #ffffff"] {
+  color: #111318 !important;
+}
+
+/* Sidebar background in light mode */
+[data-theme="light"] .sidebar {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-right-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Main background gradient override for light */
+[data-theme="light"] .main-content {
+  background: #f0f2f6 !important;
+}
+
+/* Mobile header in light mode */
+[data-theme="light"] .mobile-header {
+  background: rgba(255, 255, 255, 0.97) !important;
+  border-bottom-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .hamburger-btn {
+  color: #111318 !important;
+}
+
 
 /* ===== RESET ===== */
 *, *::before, *::after {
