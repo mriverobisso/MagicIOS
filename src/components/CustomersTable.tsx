@@ -7,11 +7,11 @@ export default function CustomersTable({ initialCustomers }: { initialCustomers:
   const [customers, setCustomers] = useState(initialCustomers);
   const [search, setSearch] = useState("");
 
-  const filtered = customers.filter(
+  const filtered = (customers || []).filter(
     (c) =>
-      c.first_name.toLowerCase().includes(search.toLowerCase()) ||
-      c.last_name.toLowerCase().includes(search.toLowerCase()) ||
-      c.email.toLowerCase().includes(search.toLowerCase())
+      (c.first_name || "").toLowerCase().includes(search.toLowerCase()) ||
+      (c.last_name || "").toLowerCase().includes(search.toLowerCase()) ||
+      (c.email || "").toLowerCase().includes(search.toLowerCase())
   );
 
   return (

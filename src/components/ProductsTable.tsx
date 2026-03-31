@@ -7,10 +7,10 @@ export default function ProductsTable({ initialProducts }: { initialProducts: an
   const [products, setProducts] = useState(initialProducts);
   const [search, setSearch] = useState("");
 
-  const filteredProducts = products.filter(
+  const filteredProducts = (products || []).filter(
     (product) =>
-      product.name.toLowerCase().includes(search.toLowerCase()) ||
-      product.sku.toLowerCase().includes(search.toLowerCase())
+      (product.name || "").toLowerCase().includes(search.toLowerCase()) ||
+      (product.sku || "").toLowerCase().includes(search.toLowerCase())
   );
 
   return (

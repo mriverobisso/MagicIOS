@@ -7,10 +7,10 @@ export default function OrdersTable({ initialOrders }: { initialOrders: any[] })
   const [orders, setOrders] = useState(initialOrders);
   const [search, setSearch] = useState("");
 
-  const filteredOrders = orders.filter(
+  const filteredOrders = (orders || []).filter(
     (order) =>
-      order.id.toString().includes(search) ||
-      `${order.billing?.first_name} ${order.billing?.last_name}`
+      (order.id?.toString() || "").includes(search) ||
+      `${order.billing?.first_name || ""} ${order.billing?.last_name || ""}`
         .toLowerCase()
         .includes(search.toLowerCase())
   );
