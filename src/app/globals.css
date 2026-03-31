@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Core Colors */
+  --bg-color: #0b0c10;
+  --panel-bg: rgba(255, 255, 255, 0.03);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(20, 21, 26, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  
+  /* Brand Accents */
+  --primary-color: #ff2e93; /* Magic Dreams Pink */
+  --primary-glow: rgba(255, 46, 147, 0.4);
+  --secondary-color: #00f0ff; /* Neon Cyan */
+  
+  /* Text Colors */
+  --text-main: #ffffff;
+  --text-muted: #8b8d98;
+  
+  /* UI Elements */
+  --sidebar-width: 260px;
+  --header-height: 70px;
+  --border-radius: 16px;
+  --transition-speed: 0.3s;
+}
+
+:root[data-theme="light"] {
+  --bg-color: #f7f9fa;
+  --panel-bg: rgba(255, 255, 255, 0.8);
+  --panel-border: rgba(0, 0, 0, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --primary-color: #e01777; /* Sligtly darker pink for light mode */
+  --primary-glow: rgba(224, 23, 119, 0.3);
+  --text-main: #17181f;
+  --text-muted: #5e6270;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Typography utilities */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+p {
+  color: var(--text-muted);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--border-radius);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Layout Classes */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100%;
+  background: var(--glass-bg);
+  border-right: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-speed) ease;
+  z-index: 10;
+}
+
+.main-content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 2rem;
+  background: radial-gradient(circle at top right, rgba(255, 46, 147, 0.05), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(0, 240, 255, 0.03), transparent 40%);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color), #bc005a);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--primary-glow);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--panel-border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
