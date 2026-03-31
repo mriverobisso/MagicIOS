@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, DragEvent } from "react";
+import { useState } from "react";
 import { Search, MapPin, Calendar, CreditCard, DollarSign } from "lucide-react";
 import { updateOrderStatus } from "@/app/actions";
 
@@ -26,18 +26,18 @@ export default function OrdersKanban({ initialOrders }: { initialOrders: any[] }
         .includes(search.toLowerCase())
   );
 
-  const handleDragStart = (e: DragEvent, order: any) => {
+  const handleDragStart = (e: React.DragEvent<HTMLDivElement>, order: any) => {
     setDraggedOrder(order);
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setData("text/plain", order.id.toString());
   };
 
-  const handleDragOver = (e: DragEvent) => {
+  const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
   };
 
-  const handleDrop = async (e: DragEvent, targetStatus: string) => {
+  const handleDrop = async (e: React.DragEvent<HTMLDivElement>, targetStatus: string) => {
     e.preventDefault();
     if (!draggedOrder || draggedOrder.status === targetStatus) return;
 
