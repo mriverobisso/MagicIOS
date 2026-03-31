@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import Sidebar from "@/components/Sidebar";
-
-const inter = Inter({
-  subsets: ["latin"],
-});
+import AppShell from "@/components/AppShell";
 
 export const metadata: Metadata = {
-  title: "Magic Dreams Admin CRM",
-  description: "Plataforma de gestión de Ecommerce",
+  title: "Magic Dreams Admin",
+  description: "Plataforma de gestión de Ecommerce - Magic Dreams",
 };
 
 export default function RootLayout({
@@ -19,13 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={inter.className}>
-        <div className="app-layout">
-          <Sidebar />
-          <div className="main-content">
-            {children}
-          </div>
-        </div>
+      <body>
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

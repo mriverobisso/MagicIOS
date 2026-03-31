@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { LayoutDashboard, ShoppingBag, Users, Package, Settings, LogOut, Activity, Sun, Moon, DollarSign } from "lucide-react";
 import Image from "next/image";
 
-export default function Sidebar() {
+export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const pathname = usePathname();
   const [isLightMode, setIsLightMode] = useState(false);
 
@@ -60,6 +60,7 @@ export default function Sidebar() {
             <Link 
               key={link.href} 
               href={link.href}
+              onClick={() => onNavigate?.()}
               style={{
                 display: "flex",
                 alignItems: "center",
