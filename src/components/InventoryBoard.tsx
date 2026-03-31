@@ -14,7 +14,7 @@ export default function InventoryBoard({ initialProducts }: { initialProducts: a
   const [isMassUploadOpen, setMassUploadOpen] = useState(false);
 
   // Extract unique categories from array of products
-  const categoriesRaw = products.flatMap(p => p.categories?.map((c: any) => c.name) || []);
+  const categoriesRaw = products.flatMap((p: any) => p.categories?.map((c: any) => c.name) || []);
   const categories = ["Todas", ...Array.from(new Set(categoriesRaw))].filter(Boolean) as string[];
 
   const filteredProducts = products.filter(
