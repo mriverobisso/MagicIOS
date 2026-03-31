@@ -7,30 +7,26 @@ import { Menu, X } from "lucide-react";
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Close sidebar when route changes (on mobile)
+  // Close sidebar on route change (mobile)
   useEffect(() => {
     const handleRouteChange = () => setSidebarOpen(false);
     window.addEventListener("popstate", handleRouteChange);
     return () => window.removeEventListener("popstate", handleRouteChange);
   }, []);
 
-  // Prevent body scroll when sidebar is open on mobile
+  // Lock body scroll when mobile drawer is open
   useEffect(() => {
-    if (sidebarOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
+    document.body.style.overflow = sidebarOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [sidebarOpen]);
 
   return (
     <div className="app-layout">
-      {/* Mobile Top Header */}
+      {/* ── Mobile top bar ── */}
       <header className="mobile-header">
         <button
           className="hamburger-btn"
-          onClick={() => setSidebarOpen(!sidebarOpen)}
+          onClick={() => setSidebarOpen(v => !v)}
           aria-label="Abrir menú"
         >
           {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
@@ -38,18 +34,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         <span className="brand">MAGIC DREAMS</span>
       </header>
 
-      {/* Dark overlay when sidebar is open on mobile */}
-      <div
-        className={`sidebar-overlay ${sidebarOpen ? "active" : ""}`}
-        onClick={() => setSidebarOpen(false)}
+      {/* ── Dark overlay (mobile only) ── */}
+      {sidebarOpen && (
+        <div
+          className="sidebar-overlay active"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {/* ── Sidebar — passes isOpen so the <aside> gets the 'open' class ── */}
+      <Sidebar
+        isOpen={sidebarOpen}
+        onNavigate={() => setSidebarOpen(false)}
       />
 
-      {/* Sidebar — has class 'open' on mobile when toggled */}
-      <div className={`sidebar ${sidebarOpen ? "open" : ""}`}>
-        <Sidebar onNavigate={() => setSidebarOpen(false)} />
-      </div>
-
-      {/* Main content area */}
+      {/* ── Main content ── */}
       <main className="main-content">
         {children}
       </main>
