@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, ShoppingBag, Users, Package, Settings, LogOut, Activity, Sun, Moon } from "lucide-react";
+import { LayoutDashboard, ShoppingBag, Users, Package, Settings, LogOut, Activity, Sun, Moon, DollarSign } from "lucide-react";
 import Image from "next/image";
 
 export default function Sidebar() {
@@ -36,6 +36,7 @@ export default function Sidebar() {
     { href: "/orders", label: "Pedidos", icon: ShoppingBag },
     { href: "/products", label: "Inventario", icon: Package },
     { href: "/customers", label: "Clientes", icon: Users },
+    { href: "/finances", label: "Finanzas", icon: DollarSign },
     { href: "/analytics", label: "Analíticas", icon: Activity },
     { href: "/settings", label: "Configuración", icon: Settings },
   ];
