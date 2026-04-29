@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, ShoppingBag, Users, Package, Settings, LogOut, Activity, Sun, Moon, DollarSign } from "lucide-react";
+import { LayoutDashboard, ShoppingBag, Users, Package, Settings, LogOut, Activity, Sun, Moon, DollarSign, Palette } from "lucide-react";
 
 interface SidebarProps {
   onNavigate?: () => void;
@@ -37,7 +37,8 @@ export default function Sidebar({ onNavigate, isOpen = false }: SidebarProps) {
   const links = [
     { href: "/", label: "Dashboard", icon: LayoutDashboard },
     { href: "/orders", label: "Pedidos", icon: ShoppingBag },
-    { href: "/products", label: "Inventario", icon: Package },
+    { href: "/products", label: "Inventario", icon: Package 
+    { href: "/customizer", label: "Personalizador", icon: Palette },},
     { href: "/customers", label: "Clientes", icon: Users },
     { href: "/finances", label: "Finanzas", icon: DollarSign },
     { href: "/analytics", label: "Analíticas", icon: Activity },
